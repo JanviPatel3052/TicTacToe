@@ -1,51 +1,17 @@
-/* .container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.cell{
-    width: 60px;
-    height: 60px;
-    border: 1px solid red;
-    background: cyan;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 30px;
-    font-weight: bolder;
-}
-
-#gameBoard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap:5px
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    gap:5px
-}
- */
-/* Reset */
+/* style.css */
+/* Color Palette (bold hues):["#f72585","#7209b7","#3a0ca3","#4361ee","#4cc9f0"]  */
+/* Color Palette (coastal hues): ["#012a4a","#013a63","#01497c","#014f86","#2a6f97","#2c7da0","#468faf","#61a5c2","#89c2d9","#a9d6e5"] */
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #fdfbfb, #ebedee); /* soft gradient */
+  background: linear-gradient(135deg, #a9d6e5, #01497c); 
 }
-
 /* Container to center everything */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 /* Game board */
@@ -53,24 +19,24 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #ffffff;
-  padding: 20px;
+  background: #b8d4db;
+  padding: 15px;
   border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 18px rgba(40, 29, 151, 0.12);
 }
 
 /* Rows */
 .row {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
 }
 
 /* Cells */
 .cell {
   width: 90px;
   height: 90px;
-  border-radius: 10px;
+  border-radius: 5px;
   background: #f0f4f8; /* light neutral background */
   display: flex;
   align-items: center;
@@ -90,16 +56,16 @@ body {
 
 /* Different colors for X and O */
 .cell.x {
-  color: #e74c3c; /* classy red */
+  color: #012a4a; /* classy red */
 }
 
 .cell.o {
-  color: #2980b9; /* deep blue */
+  color: #89c2d9; /* deep blue */
 }
 
 /* Status Text */
 #statusText {
-  margin-top: 20px;
+ 
   font-size: 20px;
   font-weight: bold;
   color: #2c3e50;         /* dark slate */
@@ -116,25 +82,39 @@ body {
 
 /* Reset Button */
 button {
-  margin-top: 15px;
+  margin-top: 0px;
   padding: 12px 24px;
   font-size: 16px;
   font-weight: bold;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #3498db, #2980b9); /* gradient blue */
-  color: white;
+  background-color: #c9cdd5;
+  color: #1f6391;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: all 0.25s ease-in-out;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 }
 
-/* Hover effect for button */
+
 button:hover {
   background: linear-gradient(135deg, #2980b9, #1f6391);
+  color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
+
+.winner {
+  background: #2a6f97 !important; /* vibrant green */
+  color: white !important;
+  box-shadow: 0 4px 12px #03045e;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }  
+}
+
+confetti

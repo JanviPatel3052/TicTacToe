@@ -10,7 +10,10 @@ function initializeGame() {
     winner = null;
 
     console.log("Game initialized. Player X starts.",board);
-
+    cells = document.getElementsByClassName("cell");
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].classList.remove("winner"); // reset winner highlight
+    }
     renderBoard();
 }
 
@@ -29,6 +32,7 @@ function renderBoard() {
         statusText.innerText = `Player ${winner} wins! 🎉`;
     } else if (winner === "Draw") {
         statusText.innerText = "It's a draw 🤝";
+        
     } else {
         statusText.innerText = `Player ${currentPlayer}'s turn`;
     }
@@ -43,6 +47,17 @@ function checkWinner() {
     for (let combination of winningCombinations) {
         const [a, b, c] = combination;
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+
+            let cells = document.getElementsByClassName("cell");
+            cells[a].classList.add("winner");
+            cells[b].classList.add("winner");
+            cells[c].classList.add("winner");
+            confetti({
+                particleCount: 200,
+                spread: 150,
+                origin: { y: 0.6 },
+                colors: ['#f72585', '#7209b7', '#3a0ca3', '#4361ee', '#4cc9f0']
+            });
             return board[a];
         }
     }   
@@ -64,6 +79,7 @@ function cellClicked(index) {
         console.log(`Player ${winner} wins!`);
     } else if (!board.includes(null)) {
         gameOver = true;
+        winner = "Draw";
         console.log("It's a draw!");
     } else {
         // Update game state variables
@@ -74,7 +90,7 @@ function cellClicked(index) {
     renderBoard();
 }
 
-// --- TEST CASES ---
+
 /* let testBoard1 = ["X", "X", "X", null, null, null, null, null, null]; // row win
 let testBoard2 = ["O", null, null, "O", null, null, "O", null, null]; // column win
 let testBoard3 = [null, null, "X", null, "X", null, "X", null, null]; // diagonal win
@@ -84,6 +100,9 @@ let testBoard5 = [null,null,null,null,null,null,null,null,null];      // ongoing
 
 document.addEventListener('DOMContentLoaded', (event) => {
     initializeGame();
+    /* testBoard1 = ["X", "X", "X", null, null, null, null, null, null]; // row win
+    board = testBoard1;
+    console.log("Testing board:", checkWinner(), board); */
     
     renderBoard();
 });
